@@ -17,6 +17,11 @@ _The production interface submits asynchronous design jobs and reports the activ
 The API defaults to one result per job to keep latency and GPU pressure predictable on the target
 6 GB card._
 
+![CanvasBot coffee-shop flyer workflow](assets/portfolio/canvasbot-coffee-shop-workflow.png)
+
+_Example workflow: a natural-language coffee-shop brief progresses through classification, creative
+direction, image generation, layout validation, and a downloadable flyer result._
+
 > **Scope:** the output has vector typography, physical dimensions, safe zones, and bleed. It is
 > not yet a press-certified PDF/X file: generated images are RGB and no printer-specific ICC
 > profile or CMYK conversion is applied. A real print integration must add the target printer's
