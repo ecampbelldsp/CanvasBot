@@ -1,0 +1,21 @@
+[Unit]
+Description=CanvasBot Streamlit UI
+After=network-online.target canvasbot-api.service
+Wants=network-online.target
+Requires=canvasbot-api.service
+
+[Service]
+Type=simple
+User=canvasbot
+Group=canvasbot
+WorkingDirectory=/opt/canvasbot
+EnvironmentFile=/etc/canvasbot.env
+ExecStart=/opt/canvasbot/.venv-app/bin/streamlit run app.py --server.address 127.0.0.1 --server.port 8501 --server.headless true
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+# server_vllm_config.yaml
+model: "Qwen/Qwen2.5-3B-Instruct-AWQ"
+quantization: "awq"
+max-model-len: 4048
+max-num-seqs: 2
+# Leave headroom for the sequentially offloaded Stable Diffusion pipeline on the same 6 GB GPU.
+gpu-memory-utilization: 0.45
+enforce-eager: true
+
+# Optional but recommended production defaults:
+host: "0.0.0.0"       # Expose outside localhost if running in a Docker container
+port: 8000            # Standard vLLM port
+uvicorn-log-level: "info"

@@ -1,0 +1,84 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "canvasbot"
+version = "1.0.0"
+description = "CanvasBot: an autonomous print and portrait design pipeline"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+license = "MIT"
+authors = [{ name = "Edward L. Campbell" }]
+dependencies = [
+    "fastapi>=0.116,<1",
+    "httpx>=0.28,<1",
+    "langchain-openai>=0.3,<2",
+    "langgraph>=0.6,<2",
+    "pillow>=11,<13",
+    "pydantic>=2.11,<3",
+    "pydantic-settings>=2.10,<3",
+    "pymupdf>=1.26,<2",
+    "reportlab>=4.4,<5",
+    "streamlit>=1.48,<2",
+    "uvicorn[standard]>=0.35,<1",
+]
+
+[project.optional-dependencies]
+generation = [
+    "accelerate>=1.10,<2",
+    "diffusers>=0.35,<1",
+    "onnxruntime>=1.22,<2",
+    "peft>=0.17,<1",
+    "rembg>=2.0.67,<3",
+    "safetensors>=0.6,<1",
+    "sentencepiece>=0.2,<1",
+    "torch>=2.7,<3",
+    "transformers>=4.55,<6",
+]
+dev = [
+    "mypy>=1.17,<2",
+    "pytest>=8.4,<9",
+    "pytest-cov>=6.2,<8",
+    "ruff>=0.12,<1",
+]
+notebooks = [
+    "ipykernel>=6.30,<8",
+    "ipywidgets>=8.1,<9",
+]
+
+[project.scripts]
+canvasbot-api = "canvasbot.api:run"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/canvasbot"]
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers --disable-warnings"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.coverage.run]
+source = ["canvasbot"]
+branch = true
+omit = ["src/canvasbot/ui.py"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 80
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["canvasbot"]
+exclude = ["notebooks"]
+ignore_missing_imports = true

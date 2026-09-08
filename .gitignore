@@ -1,0 +1,81 @@
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Python environments and build output
+.venv/
+venv/
+env/
+.python-version
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Tests, type checking, and coverage
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# Notebook runtime state (the notebooks themselves remain versioned)
+.ipynb_checkpoints/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Model and ML caches/checkpoints
+.cache/
+models/
+checkpoints/
+*.ckpt
+*.safetensors
+*.onnx
+pytorch_model*.bin
+whisper-tiny-finetuned/
+whisper_models/
+whisper_processed_data/
+
+# Temporary application state and generated design artifacts
+data/jobs/
+img/
+tmp/
+insert_*.png
+*_scrimmed.png
+generated_*.pdf
+generated_*.png
+composite_*.png
+
+# Exploratory generated assets (keep curated source/reference documents explicitly)
+notebooks/images_*/
+notebooks/canvas.pdf
+
+# Local research material and downloaded font bundles are not portfolio source code
+doc/
+notebooks/*.pdf
+notebooks/*.zip
+notebooks/Caveat/
+notebooks/Great_Vibes/
+notebooks/Montserrat/
+notebooks/Poppins/
+notebooks/fonts/
+notebooks/piper.ipynb
+
+# Local media and installer files
+*.mp3
+*.wav
+*.deb
